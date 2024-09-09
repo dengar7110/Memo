@@ -3,6 +3,7 @@ package com.garden.memo.user.service;
 import org.springframework.stereotype.Service;
 
 import com.garden.memo.common.MD5HashingEncoder;
+import com.garden.memo.user.domain.User;
 import com.garden.memo.user.repository.UserRepository;
 
 @Service
@@ -25,7 +26,15 @@ public class UserService {
 		
 		// 암호화
 		String encryptPassword = MD5HashingEncoder.encode(password);
+		
 		return userRepository.insertUser(loginId, encryptPassword, name, email);
+	}
+	
+	public User getUser(String loginId, String password) {
+		
+		String encrpytPassword = MD5HashingEncoder.encode(password);
+		
+		return userRepository.selectUser(loginId, encrpytPassword);
 	}
 	
 	
