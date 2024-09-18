@@ -42,9 +42,8 @@ public class FileManager {
 		// 파일 저장
 		String filePath = directoryPath + "/" + file.getOriginalFilename();
 		
-		byte[] bytes;
 		try {
-			bytes = file.getBytes();
+			byte[] bytes = file.getBytes();
 			Path path = Paths.get(filePath);
 			Files.write(path, bytes);
 		} catch (IOException e) {

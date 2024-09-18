@@ -38,7 +38,7 @@ public class PostController {
 	}
 	
 	@GetMapping("/create-view")
-	public String inpuitMemo() {
+	public String inputMemo() {
 		return "post/input";
 	}
 	
