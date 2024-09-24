@@ -60,4 +60,30 @@ public class FileManager {
 	}
 	
 	
+	public static boolean removeFile (String filePath) { // /images/2_1726054029039/cat-8275147_640.jpg
+
+		if(filePath == null) {
+			return false;
+		}
+		
+		String fullFilePath = FILE_UPLOAD_PATH + filePath.replace("/images", "");
+		
+		Path path = Paths.get(fullFilePath);
+		Path directioryPath = path.getParent();
+		
+		// 파일과 폴더(디렉토리) 존재하는지 확인
+		if(Files.exists(path) && Files.exists(directioryPath)) {
+			try {
+				Files.delete(path);
+				Files.delete(directioryPath);
+			} catch (IOException e) {
+				return false;
+			}
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	
 }
